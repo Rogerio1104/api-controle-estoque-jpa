@@ -25,14 +25,14 @@ public class ProdutosController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/")
     @CrossOrigin
     public ResponseEntity<List<Produtos>> carregarProdutos(){
         List<Produtos> retorno = produtosRepository.findAll();
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(retorno);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     @CrossOrigin
     public ResponseEntity<Void> deletarProdutos(@PathVariable Long id){
         produtosRepository.deleteById(id);

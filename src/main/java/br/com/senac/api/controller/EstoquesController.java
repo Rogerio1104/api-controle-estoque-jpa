@@ -32,14 +32,15 @@ public class EstoquesController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/")
     @CrossOrigin
-    public ResponseEntity<List<Lojas>> carregarEstoques(){
+    public ResponseEntity<List<Estoques>> carregarEstoques(){
         List<Estoques> retorno = estoquesRepository.findAll();
-        return ResponseEntity.ok(null);
+
+        return ResponseEntity.ok(retorno);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     @CrossOrigin
     public ResponseEntity<Void> deletarEstoques(@PathVariable Long id){
         estoquesRepository.deleteById(id);
